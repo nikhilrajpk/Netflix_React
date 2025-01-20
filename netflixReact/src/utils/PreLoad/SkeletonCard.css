@@ -1,0 +1,29 @@
+/* Skeleton loader for the image */
+.skeleton-card .skeleton-img {
+    width: 100%;
+    height: 180px; /* Match the dimensions of your actual card image */
+    background: linear-gradient(90deg, #e0e0e0 25%, #f8f8f8 50%, #e0e0e0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+  
+  /* Skeleton loader for the title */
+  .skeleton-card .skeleton-title {
+    width: 60%;
+    height: 20px;
+    margin: 10px auto;
+    background: linear-gradient(90deg, #e0e0e0 25%, #f8f8f8 50%, #e0e0e0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+  
+  /* Shimmer animation */
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+  

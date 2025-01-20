@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import './Nav.css'
+import { useNavigate } from 'react-router-dom'
 
 function Nav() {
+    const navigate = useNavigate()
     const [show, handleShow] = useState(false)
     useEffect(()=>{
         const scrollFunc = ()=>{
@@ -26,7 +28,9 @@ function Nav() {
 
         <div className="nav_righttop">
 
-            <button className='search'>Search</button>
+            <button className='search'
+                onClick={()=> navigate('/search')}
+            >Search</button>
 
             <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png?20201013161117"
             alt="Profile"

@@ -1,0 +1,17 @@
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+
+
+.result-not-found {
+    left: 37%;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    height: 98px;
+    position: absolute;
+}

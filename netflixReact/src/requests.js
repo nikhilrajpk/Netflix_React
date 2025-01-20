@@ -1,4 +1,4 @@
-const API_KEY = "ceeb11cb34dd4ed2dc583dc004912cf3"
+export const API_KEY = "ceeb11cb34dd4ed2dc583dc004912cf3"
 
 
 const requests = {
