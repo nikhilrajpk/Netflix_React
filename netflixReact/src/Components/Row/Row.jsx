@@ -2,9 +2,12 @@ import React, { useEffect, useState } from 'react'
 import './Row.css'
 import axios,{imgURL} from '../../axios'
 import useMovie from '../../Contexts/MovieContext'
+import { useNavigate } from 'react-router-dom'
 
 function Row({title, fetchUrl, isHighPoster}) {
     const [movies, setMovies] = useState([])
+    const navigate = useNavigate()
+
     // consuming the movie context
     const {handleMovie} = useMovie()
 
@@ -19,7 +22,12 @@ function Row({title, fetchUrl, isHighPoster}) {
             }
         }
         fetchMovies()
-    },[fetchUrl])
+    },[fetchUrl]);
+
+    const movieDetails = (movie)=>{
+        handleMovie(movie)
+        navigate('/movie-display')
+    }
 
   return (
     <div className='row'>
@@ -28,6 +36,7 @@ function Row({title, fetchUrl, isHighPoster}) {
             {
                 movies.map((movie)=>(
                     <img 
+                    onClick={()=>movieDetails(movie)}
                     key={movie.id} 
                     src={`${imgURL}${isHighPoster? movie.poster_path : movie.backdrop_path}`} 
                     alt={movie.name || movie.original_name} 
