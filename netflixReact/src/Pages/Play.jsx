@@ -39,7 +39,7 @@ function Play() {
                     console.error("Error finding trailer:", err);
                     setTrailerUrl("");
                 })
-            setLoading(false)
+                .finally(()=> setLoading(false))
         }
     }, [movie]);
     
@@ -51,7 +51,8 @@ function Play() {
         <div className='nav_back'></div>
         <div className='trailer'>
         {
-            loading ? < Loader /> : trailerUrl ? (
+            loading ? < Loader /> : 
+                trailerUrl ? (
                 <Youtube videoId={trailerUrl} opts={opts} />
             ) : (
                 <div style={styles.noTrailerContainer}>

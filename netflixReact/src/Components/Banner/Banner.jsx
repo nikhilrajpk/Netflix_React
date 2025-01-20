@@ -3,11 +3,18 @@ import './Banner.css'
 import useMovie from '../../Contexts/MovieContext'
 import axios, {imgURL} from '../../axios'
 import requests from '../../requests'
+import { useNavigate } from 'react-router-dom'
 
 function Banner() {
     const [movie, setMovie] = useState('')
+    const navigate = useNavigate()
 
     const {handleMovie} = useMovie()
+
+    const playTrailer = ()=>{
+        handleMovie(movie)
+        navigate('/play')
+    }
     
 
     useEffect(() => {
@@ -38,11 +45,13 @@ function Banner() {
         return str?.length > n ? str.slice(0, n-1) + '...' : str
     }
   return (
-    <header className="banner" style={{backgroundImage:`url(${movie ? imgURL+movie.poster_path : ""})`}}>
+    <header className="banner" style={{backgroundImage:`url(${movie ? imgURL+movie.backdrop_path : ""})`}}>
         <div className="banner_contents">
             <h1 className="banner_title">{movie?.title || movie?.name || movie?.original_name}</h1>
             <div className="banner_buttons">
-                <button className="banner_btn">Play</button>
+                <button className="banner_btn"
+                    onClick={playTrailer}
+                >Play</button>
                 <button className="banner_btn">My List</button>
             </div>
             <h3 className="banner_description">{truncate(movie?.overview, 150)}</h3>
